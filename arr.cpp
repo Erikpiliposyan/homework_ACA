@@ -36,6 +36,9 @@ public:
 
         return *this;
     }
+     int& operator[](int index) {
+        return ptr[index];
+    }
     int gen_element(int);
 private:
     int* ptr;
