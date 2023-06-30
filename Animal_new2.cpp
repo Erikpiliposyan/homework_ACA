@@ -16,10 +16,33 @@ public:
     bool operator>(const Animal& other) const {
         return age > other.age;
     }
+     std::string getName() const {
+        return name;
+    }
+
 
 protected:
     std::string name;
     int age;
+};
+
+
+class AnimalFunctor {
+public:
+    AnimalFunctor(const std::string& attribute)
+        : attribute(attribute) {}
+
+    std::string operator()(const Animal& animal) const {
+        if (attribute == "name") {
+            return animal.getName();
+        }
+        else {
+            return "Invalid attribute";
+        }
+
+    }
+private:
+    std::string attribute;
 };
 
 class Mammal : public Animal {
@@ -36,6 +59,7 @@ public:
 private:
     std::string type;
 };
+
 
 class Panda : public Mammal {
 public:
@@ -63,6 +87,11 @@ int main() {
     } else {
         std::cout << panda1.getName() << " is younger than or equal to " << panda2.getName() << std::endl;
     }
+
+    AnimalFunctor nameFunctor("name");
+
+    std::cout << nameFunctor(panda1) << std::endl; 
+    std::cout << nameFunctor(panda2) << std::endl; 
 
     return 0;
 }
