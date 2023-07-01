@@ -3,9 +3,14 @@
 
 class Animal {
 public:
+
+     static int constructorCount;
+
     Animal(const std::string& name, int age)
         : name(name), age(age)
-    {}
+    {
+        ++constructorCount;
+    }
 
     virtual void sound() const = 0;
 
@@ -19,6 +24,19 @@ public:
      std::string getName() const {
         return name;
     }
+    int getAge()const{
+        return age;
+    }
+     //Prefix 
+    Animal& operator++() {
+        ++age;  
+        return *this;
+    }
+    // Postfix
+    Animal operator++(int) {
+        Animal temp(*this);  
+        ++age;             
+        return temp;      
 
 
 protected:
@@ -26,6 +44,7 @@ protected:
     int age;
 };
 
+int Animal::constructorCount = 0; 
 
 class AnimalFunctor {
 public:
@@ -75,6 +94,8 @@ public:
 int main() {
     Panda panda1("Hua Mei", 5);
     Panda panda2("Mei Mei", 3);
+
+    std::cout << "Number of Animal constructor calls: " << Animal::constructorCount << std::endl;
 
     if (panda1 < panda2) {
         std::cout << panda1.getName() << " is younger than " << panda2.getName() << std::endl;
