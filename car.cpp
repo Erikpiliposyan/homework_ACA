@@ -9,6 +9,18 @@ class Car{
 
 class Mycar: public Car{
     public:
+
+
+ enum class Color {
+        red,
+        green,
+        purple,
+        orange,
+        blue,
+        white,
+        yellow,
+        black
+    };
         Mycar(const std::strin  enum class Color {
         red,
         green,
