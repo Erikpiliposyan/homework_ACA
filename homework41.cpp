@@ -17,7 +17,7 @@ public:
         std::cout << "Printing const lvalue reference: " << obj.data << std::endl;
     }
 
-    void printRValueReference(MyClass&& obj) const {
+    void printRValueReference(A&& obj) const {
         std::cout << "Printing rvalue reference: " << obj.data << std::endl;
     }
 
