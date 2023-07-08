@@ -29,3 +29,15 @@ public:
 
     ~A{}
 };
+int main() {
+    MyClass obj;
+    
+    obj.printLValue(obj); 
+    obj.printLValueReference(obj);  
+    obj.printConstLValueReference(obj); 
+    obj.printRValueReference(std::move(obj)); 
+    obj.printConstRValueReference(std::move(obj)); 
+
+    return 0;
+}
+
