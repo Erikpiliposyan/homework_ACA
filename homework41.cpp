@@ -30,7 +30,7 @@ public:
     ~A{}
 };
 int main() {
-    MyClass obj;
+    A obj;
     
     obj.printLValue(obj); 
     obj.printLValueReference(obj);  
